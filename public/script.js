@@ -80,6 +80,7 @@ function finishSearch() {
     unflagSearching();
     setStatusText(`Search finished`);
     jQuery("main").addClass('finished');
+    jQuery("h1 .fa-recycle").addClass('fa-spin');
 }
 
 // run the actual search recursively
