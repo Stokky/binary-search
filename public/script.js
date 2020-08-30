@@ -30,16 +30,22 @@ function unflagSearching() {
 
 // restart with a new set of numbers
 function newNumbers() {
-    // generate a random counter between [Min] and [Max]
+    // generate a random counter between [valsCountMin] and [valsCountMax]
     const valsCountMin = 20;
     const valsCountMax = 40;
     const valsCount = Math.round(Math.random() * (valsCountMax - valsCountMin) + valsCountMin);
 
-    // generate between [Min] and [Max] distinct random numbers, with values between 1 and 100
+    // generate [valsCount] distinct random numbers, with values between 1 and [valMax]
     // using "Set" to ensure distinct values
+    const valMax = 99;
+    if (valsCount > valMax) {
+        finishSearch();
+        setStatusText('Invalid config!');
+        return;
+    }
     const valsSet = new Set();
     while (valsSet.size !== valsCount) {
-        valsSet.add(Math.floor(Math.random() * 100) + 1);
+        valsSet.add(Math.floor(Math.random() * valMax) + 1);
     }
 
     // sort the numbers as a TypedArray (i.e. numerical sort, not alphabetical sort)
@@ -80,7 +86,7 @@ function finishSearch() {
 function runSearch(searchVal) {
     cycleCount++;
     setStatusText(`Search cycle #${cycleCount}`);
-    halfCount = Math.floor(vals.length / 2);
+    halfCount = Math.round(vals.length / 2);
     midVal = vals[halfCount - 1];
     if (searchVal == midVal || vals.length == 1) {
         finishSearch();

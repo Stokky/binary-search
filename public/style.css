@@ -12,14 +12,14 @@ main {
     flex-direction: column;
     height: 100vh;
     margin: 0 20px;
-    min-width: 500px;
+    min-width: 780px;
 }
 
 header {
     align-items: baseline;
     display: flex;
     justify-content: space-between;
-    line-height: 70px;
+    line-height: 80px;
 }
 
 main:not(.searching) h1 {
@@ -78,7 +78,6 @@ main.searching .status {
 .container {
     display: flex;
     justify-content: space-evenly;
-    padding-bottom: 200px;
 }
 
 .container .val {
@@ -102,10 +101,10 @@ main:not(.searching):not(.finished) .container .val:hover, .container .val.selec
     background: hsl(20, 100%, 50%) !important;
 }
 
-main.searching .container .val.checking::before, main.finished .container .val.selected::before {
-    bottom: -50px;
+.container .val::before {
+    top: -35px;
     font-family: "Font Awesome 5 Free";
-    font-size: 2.5rem;
+    font-size: 25px;
     left: 0;
     position: absolute;
     right: 0;
@@ -153,5 +152,5 @@ main.searching .searcher .travolta {
 }
 
 main.searching .searcher .search-line {
-    top: 100px;
+    top: 110px;
 }
